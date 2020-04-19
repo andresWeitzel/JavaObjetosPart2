@@ -28,13 +28,32 @@ public class Clase22 {
         // LA VARIABLE DE REFERENCIA HAE REFERENCIA A LA INTERFAZ COLLECTION
         Collection nombres=new ArrayList();
         
-        System.out.println("Ingrese si desea-->");
-        System.out.println("*Lista con duplicados");//HashSet
-        System.out.println("*Lista sin duplicados");//LinkedHashSet
-        System.out.println("*Lista sin duplicados rapida");//HashSet
-        System.out.println("*Lista sin duplicados ordenada");//TreeSet
+       /* System.out.println("**Menu de opciones**");
+        System.out.println("Lista_con_duplicados");//HashSet
+        System.out.println("Lista_sin_duplicados");//LinkedHashSet
+        System.out.println("Lista_sin_duplicados_rapida");//HashSet
+        System.out.println("Lista_sin_duplicados_ordenada");//TreeSet      
+        //Utilizamos colas y encolamos la lista de elementos ya existentes
+        System.out.println("Cola_de_elementos");//ArrayDeque
+        //Utilizamos pilas y empilamos los elementos ya existentes
+        System.out.println("Pila_de_elementos");//Stack    
+        */
+        //Automatizamos las opciones que tenemos del mapa, en vez de escribir c/u de ellas
+        //pedimos el conjunto de llaves, la recorremos con el foreach y las mostramos 
+        MapaCollections.getMapa().keySet().forEach(System.out::println);
         
+        System.out.println("\n--¿Escriba tal cual el elemento que desee?");
         String tipoLista=new Scanner(System.in).next();
+        
+        //Obtenemos la lista creada en MapaCollection a traves del metodo getMapa
+        //Recordar que este al ser un metodo estatico no necesito crear una objeto
+        //Casteamos todos los objetos que traemos con el constructor al tipo de dato declarado en la clase padre(Collection)
+        nombres=(Collection)Class
+                                 .forName(MapaCollections
+                                 .getMapa()
+                                 .get(tipoLista))
+                                 .getConstructor(null)
+                                 .newInstance();
         
         nombres.add("Jose");
         nombres.add("Antonia");
@@ -45,6 +64,8 @@ public class Clase22 {
         nombres.add("Sarasa");
         nombres.add("Marcos");
         nombres.add("Julieta");
+        
+        nombres.forEach(System.out::println);
     }
     
     
