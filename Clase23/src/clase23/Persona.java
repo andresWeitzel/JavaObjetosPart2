@@ -5,11 +5,13 @@
  */
 package clase23;
 
+import java.text.DecimalFormat;
+
 /**
  *
  * @author andre
  */
-public class Persona {
+public class Persona implements Comparable<Persona> {
     private String nombre;
     private String apellido;
     private int edad;
@@ -44,10 +46,26 @@ public class Persona {
         this.apellido = apellido;
     }
 
+     //Escribirimos el orden de ordenamiento
+    //utilizams el decimalformat para no tener problemas con los decimales de la edad
+    public String compare(){
+        return nombre + ","+apellido +","+new DecimalFormat("0000").format(edad);
+    }
+    @Override
+    public int compareTo(Persona o) {
+        return  this.compare().compareTo(o.compare());
+       }
+
+    
+    
     @Override
     public String toString() {
         return "Persona{" + "nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + '}';
     }
+    
+   
+
+    
     
     
     

@@ -6,6 +6,7 @@
 package clase23;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -80,6 +81,35 @@ public class Clase23 {
               .stream()
               .filter(persona->persona.getNombre().toLowerCase().contains("os"))
               .forEach(System.out::println);
+       
+       System.out.println("\n--Personas ordenadas por nombre--");
+       //SELECT * FROM Personas ORDER BY nombre;
+       lista1
+              .stream()
+              .sorted(Comparator.comparing(Persona::getNombre))//Ordena por lo que dice la interfaz comparable en la clase Persona
+              .forEach(System.out::println);
+       
+         System.out.println("\n--Personas ordenadas por edad--");
+       //SELECT * FROM Personas ORDER BY edad;
+       lista1
+              .stream()
+              .sorted(Comparator.comparingInt(Persona::getEdad))
+              .forEach(System.out::println);
+       
+       System.out.println("\n--Personas cuay edad este comprendida entre 30 y 40 años--");
+       //SELECT * FROM Personas WHERE edad BETWEEN 30 and 40 ORDER BY nombre;
+       lista1
+               .stream()
+               .filter(p->p.getEdad() >= 30 && p.getEdad() <= 60)
+               .sorted(Comparator.comparing(Persona::getEdad))
+               .forEach(System.out::println);
+               
+    
+    
+    
+    
+    
+    
     }
     
 }
