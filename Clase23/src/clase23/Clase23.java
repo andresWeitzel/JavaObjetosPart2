@@ -28,7 +28,12 @@ public class Clase23 {
         
         List <Persona>lista1=new ArrayList();
        lista1.add(new Persona("Jose","Alvarez",45));
-       lista1.add(new Persona("Jimena","perez",67));
+       lista1.add(new Persona("Jimena","Perez",67));
+       lista1.add(new Persona("Alexandro","Estechero",79));
+       lista1.add(new Persona("Gaston","Castro",90));
+       lista1.add(new Persona("Marcos","Esteverria",14));
+       lista1.add(new Persona("Luna","Caseros",19));
+       lista1.add(new Persona("Marcela","Correa",34));
        
        lista1.forEach(System.out::println);
        
@@ -104,9 +109,21 @@ public class Clase23 {
                .sorted(Comparator.comparing(Persona::getEdad))
                .forEach(System.out::println);
                
+    System.out.println("\n--Persona con la edad maxima--");
+       //SELECT MAX(edad)FROM Persona;
+       int edadMaxima=lista1
+              .stream()
+              .max(Comparator.comparing(Persona::getEdad))
+              .get()//Con este get capturamos el objeto persona con la edad max(pueden existir muchas)
+              .getEdad();//Con este get capturamos la edad maxima del de los objetos personas capturamos anteriormente
+        System.out.println("Maxima Edad : "+edadMaxima);
     
-    
-    
+    System.out.println("\n--Personas cuya edades sean iguales a la edad maxima--");
+       //SELECT * FROM Persona WHERE edad=(SELECT MAX(edad)FROM Persona);
+       lista1
+              .stream()
+              .filter(p->p.getEdad()==(edadMaxima))
+              .forEach(System.out::println);
     
     
     
